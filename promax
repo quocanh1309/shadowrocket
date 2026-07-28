@@ -1,6 +1,7 @@
 #!name=unlock
 #!desc=Tối ưu mạng|Ytb|locket|scl|lr...
 #!author=Phinn💞
+
 [General]
 
 dns-server = 223.5.5.5,1.1.1.1
@@ -60,7 +61,7 @@ http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:4
 
 [Script]
 
-#Sub-Store
+# Sub-Store
 Sub-Store Core = type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120
 
 Sub-Store Simple = type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true
@@ -124,6 +125,5 @@ deleteHeader = type=http-request,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(r
 
 
 [MITM]
-[MITM]
 
-hostname = %APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, premium*.truecaller.com, *.truecaller.com, sub.store, api.revenuecat.com, *.revenuecat.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, api-account.kinemasters.com, ap*.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, spclient.wg.spotify.com, *spclient.spotify.com, *.spotify.com, *.scdn.co
+hostname = %APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, *.youtube.com, s.youtube.com, -redirector*.googlevideo.com, *.truecaller.com, sub.store, *.revenuecat.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, api-account.kinemasters.com, ap*.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, spclient.wg.spotify.com, *spclient.spotify.com, *.spotify.com, *.scdn.co
