@@ -12,28 +12,27 @@ AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
 
 [URL Rewrite]
 ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
-^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
-^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
+^https?:\/\/(www|m|s)\.youtube\.com\/api\/stats\/ads _ reject-200
+^https?:\/\/(www|m|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
 ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
 
 [Script]
 
-# ===== YouTube =====
-youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/youtube.response.js
+youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|guide|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/main/js/youtube.response.js
 
-youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/youtube.response.js,argument="{\"lyricLang\":\"vi\",\"captionLang\":\"vi\",\"blockUpload\":true,\"blockImmersive\":true,\"debug\":false}"
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|guide|account\/get_setting|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/main/js/youtube.response.js,argument="{\"lyricLang\":\"vi\",\"captionLang\":\"vi\",\"blockUpload\":true,\"blockImmersive\":true,\"debug\":false}"
 
-# ===== SoundCloud =====
-SoundCloudGo+ = type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/SoundCloudGoPlus.js
+# SoundCloud
+SoundCloudGo+ = type=http-response,pattern=^https:\/\/api-mobile\.soundcloud\.com\/configuration\/ios,requires-body=1,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/main/js/SoundCloudGoPlus.js
 
-# ===== Locket =====
-revenuecat = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),requires-body=true,max-size=-1,timeout=60,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/Locket_DuyVinh09.js
+# Locket
+revenuecat = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/.*$),requires-body=1,max-size=-1,timeout=60,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/main/js/Locket_DuyVinh09.js
 
-deleteHeader = type=http-request,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers),script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/deleteHeader.js,timeout=60
+deleteHeader = type=http-request,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers),script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/main/js/deleteHeader.js
 
 [Map Local]
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
 
 [MITM]
-hostname = %APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, api.revenuecat.com, api-mobile.soundcloud.com
+hostname = %APPEND%, *.googlevideo.com, -redirector*.googlevideo.com, *.youtube.com, youtubei.googleapis.com, api.revenuecat.com, api-mobile.soundcloud.com
