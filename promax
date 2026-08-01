@@ -1,6 +1,5 @@
-#!name = UNLOCK
+#!name = Hin 💞❤️
 #!desc = YTB-LOCKET-SCL GO+
-#!author = Hin 💞❤️
 
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
