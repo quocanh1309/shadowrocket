@@ -339,21 +339,22 @@ var obj = JSON[_0x31b760(367, "CQUZ")]($response.body);
 obj[_0x31b760(375, "fyu&")] = _0x31b760(399, "L*8u");
 var duyvinh09 = {
   is_sandbox: false,
-  ownership_type: _0x31b760(377, "JPYr"),
+  ownership_type: "PURCHASED",
   billing_issues_detected_at: null,
-  period_type: _0x31b760(360, "XJf3"),
-  expires_date: _0x31b760(388, "xFMr"),
+  period_type: "normal",
+  expires_date: "9999-04-14T01:04:17Z",
   grace_period_expires_date: null,
   unsubscribe_detected_at: null,
-  original_purchase_date: "2005-01-09T01:04:17Z",
-  purchase_date: "2005-01-09T01:04:17Z",
+  original_purchase_date: "2008-04-14T01:04:17Z",
+  purchase_date: "2008-04-14T01:04:17Z",
   store: "app_store"
 };
+
 var duyvinh = {
   grace_period_expires_date: null,
-  purchase_date: "2005-01-09T01:04:17Z",
-  product_identifier: _0x31b760(404, "!sYB"),
-  expires_date: "2099-01-09T01:04:17Z"
+  purchase_date: "2008-04-14T01:04:17Z",
+  product_identifier: "...",
+  expires_date: "2099-04-14T01:04:17Z"
 };
 const match = Object.keys(mapping).find(_0x2d4787 => ua.includes(_0x2d4787));
 if (match) {
