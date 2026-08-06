@@ -2,7 +2,7 @@
 #!desc = YTB-LOCKET-SCL GO+
 
 [General]
-bypass-system = true
+bypass-system = false
 ipv6 = true
 udp-policy-not-supported = REJECT
 skip-proxy = *.local, captive.apple.com, *.crashlytics.com
